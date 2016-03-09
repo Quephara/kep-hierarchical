@@ -85,6 +85,7 @@ class PoolOptimiser(object):
             z, status = self._optimise(model, opt_criterion)
             if status != GRB.status.OPTIMAL:
                 raise OptimisationException("Solver status was " + str(solve_status))
+            print "Objective value", model.objVal
             self._enforce_objective(model, z, model.objVal, opt_criterion.sense)
         
         # Find all the optimal solutions
